@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Car Price Calculator</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+</head>
+
+<body>
+ <div class="login">
+	<h2>Calculate Car Price <a href="https://github.com/themightyNJ/wine-classifier"><i class="fab fa-github-square"></i></a></h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input id="first" name="Year" placeholder="Year Released" type="number ">
+      <input id="second" name="Present_Price" placeholder="Showroom Price (In lacs)" required="required">  
+      <input id="third" name="Kms_Driven"  placeholder="Kilometers Drived" required="required">
+      <input id="fourth" name="Owner" placeholder="Owners previously had the car" required="required">
+      <p>Select Fuel type</p>
+      <select name="Fuel_Type_Petrol" id="fuel" required="required">
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="CNG">CNG</option>
+      </select>
+      <p>Are you a Dealer or Individual?</p>
+      <select name="Seller_Type_Individual" id="resea" required="required">
+          <option value="Dealer">Dealer</option>
+          <option value="Individual">Individual</option>
+      </select>
+      <p>Transmission type</p>
+      <select name="Transmission_Mannual" id="research" required="required">
+          <option value="Mannual">Manual Car</option>
+          <option value="Automatic">Automatic Car</option>
+      </select>
+      <br><br>
+        
+        <button type="submit" class="btn btn-primary btn-block btn-large">Calculate</button>
+    </form>
+
+   <br>
+   {{ prediction_text }}
+   <br>
+   <br>
+   <br>
+   <br>
+
+ </div>
+
+
+</body>
+</html>
